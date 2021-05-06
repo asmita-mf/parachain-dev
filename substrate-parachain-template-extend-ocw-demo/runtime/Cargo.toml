@@ -265,6 +265,6 @@ std = [
 	"xcm/std",
 	"xcm-builder/std",
 	"xcm-executor/std",
-	"cumulus-pallet-xcm-handler/std",
-	"ocw-demo/std"
+	"cumulus-pallet-xcm-handler/std"
+#	"ocw-demo/std"
 ]
