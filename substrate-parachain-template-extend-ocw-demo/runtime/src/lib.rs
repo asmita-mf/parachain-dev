@@ -16,7 +16,7 @@ use sp_runtime::{
 	transaction_validity::{TransactionValidity, TransactionSource},
 };
 use sp_runtime::traits::{
-	BlakeTwo256, Block as BlockT, AccountIdLookup, Verify, IdentifyAccount, SaturatedConversion, Verify
+	BlakeTwo256, Block as BlockT, AccountIdLookup, Verify, IdentifyAccount, SaturatedConversion
 };
 use sp_api::impl_runtime_apis;
 
@@ -51,7 +51,7 @@ pub use frame_support::{
 
 /// Import the template pallet.
 pub use template;
-pub use ocw_demo;
+//pub use ocw_demo;
 /// An index to a block.
 pub type BlockNumber = u32;
 
@@ -346,11 +346,11 @@ impl template::Config for Runtime {
 ///   inside `create_transaction` function.
 pub type SignedPayload = generic::SignedPayload<Call, SignedExtra>;
 
-impl ocw_demo::Config for Runtime {
-	type AuthorityId = ocw_demo::crypto::TestAuthId;
-	type Call = Call;
-	type Event = Event;
-}
+//impl ocw_demo::Config for Runtime {
+//	type AuthorityId = ocw_demo::crypto::TestAuthId;
+//	type Call = Call;
+//	type Event = Event;
+//}
 
 impl<LocalCall> frame_system::offchain::CreateSignedTransaction<LocalCall> for Runtime
 where
@@ -383,7 +383,7 @@ where
 		#[cfg_attr(not(feature = "std"), allow(unused_variables))]
 		let raw_payload = SignedPayload::new(call, extra)
 			.map_err(|e| {
-				debug::native::warn!("SignedPayload error: {:?}", e);
+				//debug::native::warn!("SignedPayload error: {:?}", e);
 			})
 			.ok()?;
 
@@ -391,7 +391,7 @@ where
 
 		let address = account;
 		let (call, extra, _) = raw_payload.deconstruct();
-		Some((call, (address, signature, extra)))
+		Some((call, (sp_runtime::MultiAddress::Id(address), signature, extra)))
 	}
 }
 
@@ -427,7 +427,7 @@ construct_runtime!(
 		ParachainInfo: parachain_info::{Module, Storage, Config},
 		XcmHandler: cumulus_pallet_xcm_handler::{Module, Event<T>, Origin},
 		TemplateModule: template::{Module, Call, Storage, Event<T>},
-		OcwDemo: ocw_demo::{Module, Call, Storage, Event<T>, ValidateUnsigned},
+//		OcwDemo: ocw_demo::{Module, Call, Storage, Event<T>, ValidateUnsigned},
 	}
 );
 
