@@ -53,7 +53,7 @@ pub use frame_support::{
 
 /// Import the template pallet.
 pub use template;
-pub use ocw_demo;
+//pub use ocw_demo;
 /// An index to a block.
 pub type BlockNumber = u32;
 
@@ -348,11 +348,11 @@ impl template::Config for Runtime {
 ///   inside `create_transaction` function.
 pub type SignedPayload = generic::SignedPayload<Call, SignedExtra>;
 
-impl ocw_demo::Config for Runtime {
-	type AuthorityId = ocw_demo::crypto::TestAuthId;
-	type Call = Call;
-	type Event = Event;
-}
+//impl ocw_demo::Config for Runtime {
+//	type AuthorityId = ocw_demo::crypto::TestAuthId;
+//	type Call = Call;
+//	type Event = Event;
+//}
 
 impl<LocalCall> frame_system::offchain::CreateSignedTransaction<LocalCall> for Runtime
 where
@@ -428,8 +428,8 @@ construct_runtime!(
 		TransactionPayment: pallet_transaction_payment::{Module, Storage},
 		ParachainInfo: parachain_info::{Module, Storage, Config},
 		XcmHandler: cumulus_pallet_xcm_handler::{Module, Event<T>, Origin},
-		TemplateModule: template::{Module, Call, Storage, Event<T>},
-		OcwDemo: ocw_demo::{Module, Call, Storage, Event<T>, ValidateUnsigned},
+		TemplateModule: template::{Module, Call, Storage, Event<T>}
+//		OcwDemo: ocw_demo::{Module, Call, Storage, Event<T>, ValidateUnsigned},
 	}
 );
 
