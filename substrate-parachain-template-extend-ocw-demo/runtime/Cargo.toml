@@ -176,11 +176,11 @@ package = 'pallet-template'
 path = '../pallets/template'
 version = '3.0.0'
 
-[dependencies.ocw-demo]
-default-features = false
-package = 'ocw-demo'
-path = '../pallets/ocw-demo'
-version = '3.0.0'
+#[dependencies.ocw-demo]
+#default-features = false
+#package = 'ocw-demo'
+#path = '../pallets/ocw-demo'
+#version = '3.0.0'
 
 # Cumulus dependencies
 [dependencies.parachain-info]
@@ -265,6 +265,6 @@ std = [
 	"xcm/std",
 	"xcm-builder/std",
 	"xcm-executor/std",
-	"cumulus-pallet-xcm-handler/std",
-	"ocw-demo/std"
+	"cumulus-pallet-xcm-handler/std"
+#	"ocw-demo/std"
 ]
